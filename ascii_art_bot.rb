@@ -7,7 +7,7 @@ class AsciiArtBot < AwesomeBotFactory::Skill
     c.description = ""
     c.author = "holek"
     c.url = "http://abf-ascii-art-bot.herokuapp.com/ascii_art_bot"
-    c.regex = "\/ascii(\:?[a-zA-Z-\.]*?)(\s.*)"
+    c.regex = "\/ascii(\:?[^ ]*)(.*?)$"
     c.help = ""
   end
 
