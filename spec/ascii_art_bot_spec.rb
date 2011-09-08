@@ -10,7 +10,7 @@ describe AsciiArtBot do
   \__,_|\__,_|_| |_|\___\___|  \__,_|_|  \___/ \__,_|_| |_|\__,_|  \__|_| |_|\___|   \_/\_/ \___/|_|  |_|\__,_|
                                                                                                                
                                                                                                                '}
-  subject { AsciiArtBot.new(AwesomeBotFactory::ExamplePayload.new("match" => ["/ascii #{input}", input])) }
+  subject { AsciiArtBot.new(AwesomeBotFactory::ExamplePayload.new("match" => ["/ascii #{input}", "", input])) }
   
   its(:text) { should eql(input) }
   its(:reply) { should eql({ :type => "PasteMessage", :body => output })}
@@ -18,7 +18,7 @@ describe AsciiArtBot do
   describe "as a rack application" do
     let(:app) { AsciiArtBot }
     before do
-      post "/ascii_art_bot", {}, :input => AwesomeBotFactory::ExamplePayload.new("match" => ["/ascii #{input}", input]).as_json
+      post "/ascii_art_bot", {}, :input => AwesomeBotFactory::ExamplePayload.new("match" => ["/ascii #{input}", "", input]).as_json
     end
     let(:json_body) { JSON.parse(last_response.body) }
 
